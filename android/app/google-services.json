@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "746014102635",
+    "project_id": "narailcity-3b9f5",
+    "storage_bucket": "narailcity-3b9f5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746014102635:android:9cf7c84dda68b8e49c8d2e",
+        "android_client_info": {
+          "package_name": "com.example.narail_city"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2CBufwC7OdVGLRDTqWagU5dCmyqR-p3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
