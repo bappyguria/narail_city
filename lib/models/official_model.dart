@@ -1,11 +1,11 @@
-class Official {
+class ZilaProsasonModel {
   final String name;
   final String designation;
   final String phone;
   final String address;
   final String image;
 
-  Official({
+  ZilaProsasonModel({
     required this.name,
     required this.designation,
     required this.phone,
@@ -13,8 +13,8 @@ class Official {
     required this.image,
   });
 
-  factory Official.fromMap(Map<String, dynamic> map) {
-    return Official(
+  factory ZilaProsasonModel.fromMap(Map<String, dynamic> map) {
+    return ZilaProsasonModel(
       name: map['name'] ?? '',
       designation: map['designation'] ?? '',
       phone: map['phone'] ?? '',

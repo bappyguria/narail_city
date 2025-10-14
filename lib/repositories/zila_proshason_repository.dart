@@ -1,12 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:narail_city/models/polish_data.dart';
 import '../models/official_model.dart';
 
-class ZilaProshasonRepository {
+class Repository {
   final FirebaseFirestore firestore;
 
-  ZilaProshasonRepository({required this.firestore});
+  Repository({required this.firestore});
 
-  Future<List<Official>> fetchOfficials() async {
+  Future<List<ZilaProsasonModel>> fetchOfficials() async {
     final doc = await firestore
         .collection('NarailDistrict')
         .doc('ZilaProshason')
@@ -15,6 +16,14 @@ class ZilaProshasonRepository {
     if (!doc.exists) return [];
 
     final List officialsRaw = doc.get('officials') as List;
-    return officialsRaw.map((e) => Official.fromMap(e)).toList();
+    return officialsRaw.map((e) => ZilaProsasonModel.fromMap(e)).toList();
+  }
+
+  Future<List<PolishData>> fetchPolishData() async {
+    final doc = await firestore.collection('NarailDistrict').doc('PolishStashon').get();
+    if (!doc.exists) return [];
+    final List PolishStashonList = doc.get('PolishStashonList') as List;
+    print(PolishStashonList);
+    return PolishStashonList.map((e) => PolishData.fromMap(e)).toList();
   }
 }

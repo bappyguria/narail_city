@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:narail_city/ui/screens/zila_prosason_screen.dart';
+import 'package:narail_city/ui/screens/Bank/bank_list_screens.dart';
+import 'package:narail_city/ui/screens/ZilaProsason/zila_prosason_screen.dart';
+
+import 'Polish/polish_thana_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -109,10 +112,14 @@ class HomeScreen extends StatelessWidget {
                     Navigator.push(context, MaterialPageRoute(builder: (context)=> ZilaProshasonScreen()));
                   }),
                   // _buildServiceCard('🏛️', 'পৌরসভা/ইউনিয়ন'),
-                  // _buildServiceCard('👮', 'থানা/পুলিশ'),
+                  _buildServiceCard('👮', 'থানা/পুলিশ',(){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> PolishThanaScreen()));
+                  }),
                   // _buildServiceCard('🚒', 'ফায়ার সার্ভিস'),
                   // _buildServiceCard('🏥', 'হাসপাতাল'),
-                  // _buildServiceCard('⚡', 'বিদ্যুৎ সেবা'),
+                  _buildServiceCard('⚡', 'Bank',(){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> BankListScreens()));
+                  }),
                   // _buildServiceCard('🏫', 'শিক্ষা প্রতিষ্ঠান'),
                   // _buildServiceCard('👨‍💼', 'সাংবাদিক'),
                   // _buildServiceCard('👷', 'ডাক্তার'),
