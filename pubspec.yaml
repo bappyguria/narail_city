@@ -39,6 +39,7 @@ dependencies:
   flutter_bloc:
   bloc:
   url_launcher: ^6.3.2
+  carousel_slider: ^5.1.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

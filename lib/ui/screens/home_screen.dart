@@ -1,6 +1,8 @@
+import 'package:carousel_slider/carousel_options.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:narail_city/ui/screens/Bank/bank_list_screens.dart';
-import 'package:narail_city/ui/screens/ZilaProsason/zila_prosason_screen.dart';
+import 'package:narail_city/ui/screens/ZilaProsason/zila_prosason_screen.dart' hide BankListScreens;
 
 import 'Polish/polish_thana_screen.dart';
 
@@ -31,18 +33,7 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         children: [
           // Banner Image
-          Container(
-            height: 220,
-            width: double.infinity,
-            // decoration: BoxDecoration(
-            //   image: DecorationImage(
-            //     image: NetworkImage(
-            //       'https://images.unsplash.com/photo-1554224311-beee4c75701a?w=800',
-            //     ),
-            //     fit: BoxFit.cover,
-            //   ),
-            // ),
-          ),
+          BankImageCarousel(),
 
           // Scrolling Text Banner
           Container(
@@ -117,7 +108,7 @@ class HomeScreen extends StatelessWidget {
                   }),
                   // _buildServiceCard('🚒', 'ফায়ার সার্ভিস'),
                   // _buildServiceCard('🏥', 'হাসপাতাল'),
-                  _buildServiceCard('⚡', 'Bank',(){
+                  _buildServiceCard('🏦', 'Bank',(){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=> BankListScreens()));
                   }),
                   // _buildServiceCard('🏫', 'শিক্ষা প্রতিষ্ঠান'),
@@ -198,6 +189,47 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+class BankImageCarousel extends StatelessWidget {
+  const BankImageCarousel({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final List<String> imageUrls = [
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYELlVs6HB_xhw_52Ae_HOM6t9JgDe2uxmUA&s',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHED9nffAEIpJjdeb6WkF42JSuJaUns6dGjA&s',
+      'https://media.gettyimages.com/id/566456199/photo/bulls-graze-near-a-jute-field-eighty-percent-of-the-worlds-high-quality-jute-grows-in.jpg?s=612x612&w=0&k=20&c=vS5nQQBFHyV2ndzS1TUns393wuLiSLAg6mM-9dF-Nk8=',
+      'https://propertyguide.com.bd/_next/image?url=https%3A%2F%2Fpropertyguide-store.s3.ap-southeast-1.amazonaws.com%2Fbikroy%2Fmedium_Untitled_design_25_8ab8e922b0.jpg&w=3840&q=75',
+    ];
+
+    return CarouselSlider.builder(
+      itemCount: imageUrls.length,
+      itemBuilder: (context, index, realIndex) {
+        return SizedBox(
+          width: MediaQuery.of(context).size.width, // 🔹 Full width
+          child: Image.network(
+            imageUrls[index],
+            fit: BoxFit.cover, // 🔹 Fill the screen horizontally
+            loadingBuilder: (context, child, loadingProgress) {
+              if (loadingProgress == null) return child;
+              return const Center(child: CircularProgressIndicator());
+            },
+            errorBuilder: (context, error, stackTrace) =>
+            const Icon(Icons.error, color: Colors.red),
+          ),
+        );
+      },
+      options: CarouselOptions(
+        height: 200,
+        autoPlay: true,
+        enlargeCenterPage: false, // 🔹 Disable center zoom
+        viewportFraction: 1.0, // 🔹 1.0 = full width
+        enableInfiniteScroll: true,
+        autoPlayInterval: const Duration(seconds: 4),
+        autoPlayAnimationDuration: const Duration(milliseconds: 800),
       ),
     );
   }
